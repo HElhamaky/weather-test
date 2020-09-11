@@ -21,7 +21,7 @@
 const CACHE_NAME = "static-cache-v1";
 
 // CODELAB: Add list of files to cache here.
-const FILES_TO_CACHE = ["/offline.html, /css/style.css"];
+const FILES_TO_CACHE = ["/offline.html"];
 
 self.addEventListener("install", (evt) => {
   console.log("[ServiceWorker] Install");
