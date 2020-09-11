@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="GADs Weather" />
+    <meta name="description" content="GADs PWA Weather App." />
+    <meta name="theme-color" content="#2F3BA2" />
+    <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>GADs Weather</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form">
+        <form action="">
+          <input
+            data-city-input
+            id="City"
+            class="input"
+            name="City"
+            type="text"
+            placeholder="Enter City Name"
+          />
+
+          <button id="button">Get Weather</button>
+        </form>
+      </div>
+      <div class="summary-card">
+        <div class="flex-row1">
+          <div class="flex-col">
+            <div class="city">
+              <h1 data-city-name>Cairo</h1>
+              <span>, </span>
+              <span data-country-code>EG</span>
+            </div>
+            <p data-description>Haze</p>
+          </div>
+          <div class="flex-col col2">
+            <div class="flex-rw">
+              <img
+                data-icon
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt=""
+              />
+              <div class="temp">
+                <h2><span data-temperature>25</span>&deg; C</h2>
+                <h3>Feels Like <span data-feels-like>22</span> &deg;</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="details-card">
+        <div class="div1">
+          <em class="fas fa-umbrella"></em>
+          <p>
+            <span data-rain-chance>40</span>
+            <span>%</span>
+          </p>
+          <p>Chance of Rain</p>
+        </div>
+        <div class="div2">
+          <em class="fas fa-tint"></em>
+          <p>
+            <span data-humidity>50</span>
+            <span>%</span>
+          </p>
+          <p>Humidity</p>
+        </div>
+        <div class="div3">
+          <em class="fas fa-wind"></em>
+          <p><span data-wind>5</span> km/h</p>
+          <p>Wind</p>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
