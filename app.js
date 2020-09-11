@@ -1,10 +1,3 @@
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("/sw.js")
-    .then((reg) => console.log("service worker registered"))
-    .catch((err) => console.log("service worker not registered", err));
-}
-
 const cityName = document.querySelector("[data-city-name]");
 const countryCode = document.querySelector("[data-country-code]");
 const description = document.querySelector("[data-description]");
@@ -90,21 +83,19 @@ function SaveToLocalStorage(data) {
   localStorage.setItem(`${data.name}`, ObjSerialized);
 }
 
-// if ("serviceWorker" in navigator) {
-//   window.addEventListener("load", () => {
-//     navigator.serviceWorker.register("/service-worker.js").then((reg) => {
-//       console.log("Service worker registered.", reg);
-//     });
-//   });
-// }
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js").then((reg) => {
+      console.log("Service worker registered.", reg);
+    });
+  });
+}
 
-// let deferredPrompt;
+let deferredPrompt;
 
-// window.addEventListener("beforeinstallprompt", (e) => {
-//   // Prevent the mini-infobar from appearing on mobile
-//   e.preventDefault();
-//   // Stash the event so it can be triggered later.
-//   deferredPrompt = e;
-//   // Update UI notify the user they can install the PWA
-//   showInstallPromotion();
-// });
+window.addEventListener("beforeinstallprompt", (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+});
