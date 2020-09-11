@@ -1,3 +1,10 @@
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/sw.js")
+    .then((reg) => console.log("service worker registered"))
+    .catch((err) => console.log("service worker not registered", err));
+}
+
 const cityName = document.querySelector("[data-city-name]");
 const countryCode = document.querySelector("[data-country-code]");
 const description = document.querySelector("[data-description]");
@@ -83,37 +90,21 @@ function SaveToLocalStorage(data) {
   localStorage.setItem(`${data.name}`, ObjSerialized);
 }
 
-// Temperature.innerText = data.main.temp;
-// CityName.innerText = data.name;
-// CountryCode.innerText = data.sys.country;
-// Description.innerText = data.weather[0].main;
-// FeelLike.innerText = data.main.feels_like;
-// let IconCode = data.weather[0].icon;
-// Icon.src = `http://openweathermap.org/img/wn/${IconCode}@2x.png`;
-// RainChance.innerText = data.clouds.all;
-// Humidity.innerText = data.main.humidity;
-// Wind.innerText = data.wind.speed;
-// const Temp = data.main.temp;
-// const description = data.weather[0].main;
-// const icon = data.weather[0].icon;
+// if ("serviceWorker" in navigator) {
+//   window.addEventListener("load", () => {
+//     navigator.serviceWorker.register("/service-worker.js").then((reg) => {
+//       console.log("Service worker registered.", reg);
+//     });
+//   });
+// }
 
-// let { Temperature, CityName, CountryCode, Description, FeelLike, IconSrc, RainChance, Humidity, Wind} = CityWeatherData;
+// let deferredPrompt;
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/service-worker.js").then((reg) => {
-      console.log("Service worker registered.", reg);
-    });
-  });
-}
-
-let deferredPrompt;
-
-window.addEventListener("beforeinstallprompt", (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-});
+// window.addEventListener("beforeinstallprompt", (e) => {
+//   // Prevent the mini-infobar from appearing on mobile
+//   e.preventDefault();
+//   // Stash the event so it can be triggered later.
+//   deferredPrompt = e;
+//   // Update UI notify the user they can install the PWA
+//   showInstallPromotion();
+// });
